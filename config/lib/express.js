@@ -103,7 +103,7 @@ module.exports.initViewEngine = function (app) {
 
   // Set views path and view engine
   app.set('view engine', 'server.view.html');
-  app.set('views', ['./', '/modules/core/server/views']);
+  app.set('views', ['./', './modules/core/server/views', './modules/tweets/views']);
 };
 
 /**
@@ -143,18 +143,7 @@ module.exports.initHelmetHeaders = function (app) {
   app.disable('x-powered-by');
 };
 
-/**
- * Configure the modules static routes
- */
-module.exports.initModulesClientRoutes = function (app) {
-  // Setting the app router and static folder
-  app.use('/', express.static(path.resolve('./public')));
 
-  // Globbing static routing
-  config.folders.client.forEach(function (staticPath) {
-    app.use(staticPath.replace('/client', ''), express.static(path.resolve('./' + staticPath)));
-  });
-};
 
 /**
  * Configure the modules ACL policies
@@ -173,6 +162,19 @@ module.exports.initModulesServerRoutes = function (app) {
   // Globbing routing files
   config.files.server.routes.forEach(function (routePath) {
     require(path.resolve(routePath))(app);
+  });
+};
+
+/**
+ * Configure the modules static routes
+ */
+module.exports.initModulesClientRoutes = function (app) {
+  // Setting the app router and static folder
+  app.use('/', express.static(path.resolve('./public')));
+
+  // Globbing static routing
+  config.folders.client.forEach(function (staticPath) {
+    app.use(staticPath.replace('/client', ''), express.static(path.resolve('./' + staticPath)));
   });
 };
 
