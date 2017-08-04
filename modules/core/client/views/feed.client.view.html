@@ -1,4 +1,4 @@
-<div data-ng-contrioller>
+<div data-ng-controller="FeedController">
   <div class="container body">
     <div class="left-panel">
       <div class="profile">
@@ -21,7 +21,7 @@
             <div class="number">{{ profile.followerCount }}</div>
           </div>
           <div class="col">
-            <div class="text">Following</div>
+            <div class="text">Followings</div>
             <div class="number">{{ profile.followingCount }}</div>
           </div>
         </div>
@@ -44,7 +44,7 @@
         </form>
       </div>
       <div class="tweet-list">
-        <div class="tweet" data-ng-repeat="tweet in tweets">
+        <div class="tweet" data-ng-repeat="tweet in timeline">
           <a href="user.html">
             <div class="name">
               {{ tweet.name }}
