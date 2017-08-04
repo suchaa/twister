@@ -1,0 +1,66 @@
+<div data-ng-contrioller>
+  <div class="container body">
+    <div class="left-panel">
+      <div class="profile">
+        <div class="header">
+          <a href="me.html">
+            <div class="name">{{ profile.name }}</div>
+          </a>
+          <a href="me.html">
+            <div class="screen-name">@{{ profile.screenName }}</div>
+          </a>
+        </div>
+        <!-- /.header -->
+        <div class="detail last-section">
+          <div class="col">
+            <div class="text">Tweets</div>
+            <div class="number">{{ profile.tweetCount }}</div>
+          </div>
+          <div class="col">
+            <div class="text">Followers</div>
+            <div class="number">{{ profile.followerCount }}</div>
+          </div>
+          <div class="col">
+            <div class="text">Following</div>
+            <div class="number">{{ profile.followingCount }}</div>
+          </div>
+        </div>
+        <!-- /.detail -->
+      </div>
+      <!-- /.border-box .profile -->
+    </div>
+
+    <div class="main-panel">
+      <div class="new-tweet first-item">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <div class="tweet-text col-sm-10">
+              <input type="text" class="form-control" id="tweetText" placeholder="What's happening">
+            </div>
+            <div class="col-sm-2">
+              <input type="button" class="btn btn-default" value="Tweet">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="tweet-list">
+        <div class="tweet" data-ng-repeat="tweet in tweets">
+          <a href="user.html">
+            <div class="name">
+              {{ tweet.name }}
+            </div>
+            <div class="screen-name">
+                @{{ tweet.screenName }}
+            </div>
+          </a>
+          <div class="tweet-text">
+              {{ tweet.tweetText }}
+          </div>
+          <div class="action">
+            <div class="reply"><i class="fa fa-reply"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

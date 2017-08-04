@@ -9,9 +9,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 
     // Home state routing
     $stateProvider
-      .state('home', {
+      .state('feed', {
         url: '/',
-        templateUrl: 'modules/core/views/home.client.view.html'
+        templateUrl: 'modules/core/views/feed.client.view.html'
       })
       .state('not-found', {
         url: '/not-found',
