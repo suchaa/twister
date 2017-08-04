@@ -35,16 +35,16 @@
         <form class="form-horizontal">
           <div class="form-group">
             <div class="tweet-text col-sm-10">
-              <input type="text" class="form-control" id="tweetText" placeholder="What's happening">
+              <input type="text" class="form-control" id="tweetText" placeholder="What's happening" data-ng-model="tweetText" >
             </div>
             <div class="col-sm-2">
-              <input type="button" class="btn btn-default" value="Tweet">
+              <input type="button" class="btn btn-default" value="Tweet" data-ng-click="postTweet(tweetText, profile.name, profile.screenName)">
             </div>
           </div>
         </form>
       </div>
       <div class="tweet-list">
-        <div class="tweet" data-ng-repeat="tweet in timeline">
+        <div class="tweet" data-ng-repeat="tweet in timeline | orderBy: '-tweetTime'">
           <a href="user.html">
             <div class="name">
               {{ tweet.name }}

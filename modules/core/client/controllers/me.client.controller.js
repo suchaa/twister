@@ -26,6 +26,6 @@ angular.module('core').controller('MeController', [
         screenName: 'suchaa',
         tweetText: '5555555555555555555'
       }
-    ]
+    ];
   }
 ]);
