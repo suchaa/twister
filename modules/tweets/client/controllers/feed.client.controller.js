@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('core').controller('FeedController', [
+angular.module('tweets').controller('FeedController', [
   '$scope',
-  function($scope) {
+  '$modal',
+  function($scope, $modal) {
     $scope.profile = {
       name: 'Suchada Chaiyakot',
       screenName: 'suchaa',
-      tweetCount: 2,
+      tweetCount: 1,
       followerCount: 34,
       followingCount: 140
     };
@@ -40,6 +41,24 @@ angular.module('core').controller('FeedController', [
         tweetTime: new Date().toISOString()
       });
       $scope.tweetText = '';
+      $scope.profile.tweetCount += 1;
     };
+
+    $scope.replyTo = function(screenName){
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'modules/tweets/client/views/me/replymodel.client.view.html',
+        controller: 'ReplyModalController',
+        resolve: {  //tweetText ถูกฉีดเข้าไปใน controller จะได้ค่าที่ return จาก function
+          tweetText: function(){
+            return '@' + screenName + ' ';
+          }
+        }
+      });
+      modalInstance.result.then(function(tweetText){
+        $scope.postTweet(tweetText, $scope.profile.name, $scope.profile.screenName);
+      });
+    };
+    
   }
 ]);

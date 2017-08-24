@@ -103,7 +103,7 @@ module.exports.initViewEngine = function (app) {
 
   // Set views path and view engine
   app.set('view engine', 'server.view.html');
-  app.set('views', ['./', './modules/core/server/views', './modules/tweets/views']);
+  app.set('views', ['./', './modules/core/server/views','./modules/core/client/views', './modules/tweets/views']);
 };
 
 /**

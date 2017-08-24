@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('core').controller('MeController', [
+angular.module('tweets').controller('MeController', [
   '$scope',
   function($scope) {
     $scope.profile = {
