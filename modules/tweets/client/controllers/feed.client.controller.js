@@ -47,7 +47,7 @@ angular.module('tweets').controller('FeedController', [
     $scope.replyTo = function(screenName){
       var modalInstance = $modal.open({
         animation: true,
-        templateUrl: 'modules/tweets/client/views/me/replymodel.client.view.html',
+        templateUrl: './views/replymodal.client.view.html',
         controller: 'ReplyModalController',
         resolve: {  //tweetText ถูกฉีดเข้าไปใน controller จะได้ค่าที่ return จาก function
           tweetText: function(){

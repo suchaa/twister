@@ -35,7 +35,7 @@
         <form class="form-horizontal">
           <div class="form-group">
             <div class="tweet-text col-sm-10">
-              <input type="text" class="form-control" id="tweetText" placeholder="What's happening" data-ng-model="tweetText" >
+              <input type="text" class="form-control" id="tweetText" placeholder="What's happening" data-ng-model="tweetText">
             </div>
             <div class="col-sm-2">
               <input type="button" class="btn btn-default" value="Tweet" data-ng-click="postTweet(tweetText, profile.name, profile.screenName)">
@@ -50,11 +50,11 @@
               {{ tweet.name }}
             </div>
             <div class="screen-name">
-                @{{ tweet.screenName }}
+              @{{ tweet.screenName }}
             </div>
           </a>
           <div class="tweet-text">
-              {{ tweet.tweetText }}
+            {{ tweet.tweetText }}
           </div>
           <div class="action">
             <div class="reply" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-reply"></i></div>

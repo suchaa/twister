@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('core').controller('ReplyModalController', [
+angular.module('tweets').controller('ReplyModalController', [
   '$scope',
   '$modalInstance',
   'tweetText',
