@@ -5,7 +5,17 @@ angular.module('users').config(['$stateProvider',
   function ($stateProvider) {
     // Users state routing
     $stateProvider
-      .state('settings', {
+    .state('signup', {
+      url: '/signup',
+      templateUrl: 'modules/users/views/authentication/signup.client.view.html'
+    })
+    .state('signin', {
+      url: '/signin',
+      templateUrl: 'modules/users/views/authentication/signin.client.view.html'
+    })
+
+    
+     /*  .state('settings', {
         abstract: true,
         url: '/settings',
         templateUrl: 'modules/users/views/settings/settings.client.view.html',
@@ -67,6 +77,6 @@ angular.module('users').config(['$stateProvider',
       .state('password.reset.form', {
         url: '/:token',
         templateUrl: 'modules/users/views/password/reset-password.client.view.html'
-      });
+      }) */;
   }
 ]);

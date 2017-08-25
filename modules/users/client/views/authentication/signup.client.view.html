@@ -1,4 +1,4 @@
-<div class="signup-form" data-ng-controller='AuthenticationController'>
+<div class="signup-form" data-ng-controller="AuthenticationController">
   <div class="logo text-center">Sign up</div>
   <form name="userForm" data-ng-submit="signup()" novalidate autocomplete="off">
     <div class="form-group">
@@ -17,7 +17,7 @@
       <input type="password" class="form-control" placeholder="Password" data-ng-model="credentials.password">
     </div>
     <div class="form-group text-right">
-      <a class="btn btn-primary" type="submit" >Sign up</a>
+      <button class="btn btn-primary" type="submit" >Sign up</button>
     </div>
     <div class="text-center.text-danger" data-ng-show="error">
       <strong data-ng-bind="error"></strong>
