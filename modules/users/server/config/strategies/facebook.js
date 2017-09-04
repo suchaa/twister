@@ -13,8 +13,9 @@ module.exports = function (config) {
       clientID: config.facebook.clientID,
       clientSecret: config.facebook.clientSecret,
       callbackURL: config.facebook.callbackURL,
-      profileFields: ['id', 'name', 'displayName', 'emails', 'photos'],
-      passReqToCallback: true
+      //profileFields: ['id', 'name', 'displayName', 'emails', 'photos'],
+      passReqToCallback: true,
+      profileFields: ['name', 'displayName', 'email'],
     },
     function (req, accessToken, refreshToken, profile, done) {
       // Set the provider data and include tokens

@@ -36,16 +36,25 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
       });
     };
 
-    // OAuth provider request
-    $scope.callOauthProvider = function (url) {
-      var redirect_to;
+   /*  $scope.signout = function () {
+      $http.get('/api/auth/signout', $scope.credentials).success(function (response) {
+        $scope.authentication.user = response;
+        $state.go($state.previous.state.name || 'signin', $state.previous.params);
+      }).error(function (response) {
+        $scope.error = response.message;
+      });
+    }; */
 
-      if ($state.previous) {
-        redirect_to = $state.previous.href;
-      }
+      // OAuth provider request
+      $scope.callOauthProvider = function (url) {
+        var redirect_to;
 
-      // Effectively call OAuth authentication route:
-      $window.location.href = url + (redirect_to ? '?redirect_to=' + encodeURIComponent(redirect_to) : '');
-    };
-  }
+        if ($state.previous) {
+          redirect_to = $state.previous.href;
+        }
+
+        // Effectively call OAuth authentication route:
+        $window.location.href = url + (redirect_to ? '?redirect_to=' + encodeURIComponent(redirect_to) : '');
+      };
+    }
 ]);

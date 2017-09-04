@@ -1,0 +1,49 @@
+<div data-ng-controller="UserTimelineController">
+    <div class="container body">
+        <div class="left-panel">
+            <div class="profile">
+                <div class="header">
+                    <div class="name">{{ profile.name}}</div>
+                    <div class="screen-name">@{{ profile.screenName}}</div>
+                </div>
+                <!-- /.header -->
+                <div class="detail">
+                    <div class="col">
+                        <div class="text">Tweets</div>
+                        <div class="number">{{ profile.tweetCount}}</div>
+                    </div>
+                    <div class="col">
+                        <div class="text">Followers</div>
+                        <div class="number">{{ profile.followerCount }}</div>
+                    </div>
+                    <div class="col">
+                        <div class="text">Following</div>
+                        <div class="number">{{ profile.followingCount }}</div>
+                    </div>
+                </div>
+                <div class="action last-section">
+                    <input type="button" class="btn btn-default btn-lg" value="Follow" data-ng-click="follow(profile.screenName)">
+                </div>
+                <!-- /.detail -->
+            </div>
+            <!-- /.border-box .profile -->
+        </div>
+
+        <div class="main-panel">
+            <div class="tweet" data-ng-repeat="tweet in tweets | orderBy: '-tweetTime'" data-ng-class="{'first-item': $first}">
+                <div class="name">
+                    {{ tweet.name }}
+                </div>
+                <div class="screen-name">
+                    @{{ tweet.screenName }}
+                </div>
+                <div class="tweet-text">
+                    {{ tweet.tweetText}}
+                </div>
+                <div class="action">
+                    <div class="reply" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-reply"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

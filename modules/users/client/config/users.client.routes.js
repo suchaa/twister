@@ -13,7 +13,6 @@ angular.module('users').config(['$stateProvider',
       url: '/signin',
       templateUrl: 'modules/users/views/authentication/signin.client.view.html'
     })
-    
     .state('authentication.signup', {
       url: '/signup',
       templateUrl: 'modules/users/views/authentication/signup.client.view.html'
@@ -22,6 +21,14 @@ angular.module('users').config(['$stateProvider',
       url: '/signin?err',
       templateUrl: 'modules/users/views/authentication/signin.client.view.html'
     })
+   /*  .state('signout', {
+      url: '/signout',
+      templateUrl: 'modules/users/views/authentication/signin.client.view.html'
+    })
+    .state('authentication.signout', {
+      url: '/signout?err',
+      templateUrl: 'modules/users/views/authentication/signin.client.view.html'
+    }) */
 
     
      /*  .state('settings', {

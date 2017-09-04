@@ -3,10 +3,10 @@
     <div class="left-panel">
       <div class="profile">
         <div class="header">
-          <a href="me.html">
+          <a data-ui-sref="me">
             <div class="name">{{ profile.name }}</div>
           </a>
-          <a href="me.html">
+          <a data-ui-sref="me">
             <div class="screen-name">@{{ profile.screenName }}</div>
           </a>
         </div>
@@ -45,7 +45,7 @@
       </div>
       <div class="tweet-list">
         <div class="tweet" data-ng-repeat="tweet in timeline | orderBy: '-tweetTime'">
-          <a href="user.html">
+          <a href="user">
             <div class="name">
               {{ tweet.name }}
             </div>

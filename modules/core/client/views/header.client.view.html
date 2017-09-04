@@ -1,21 +1,27 @@
-<nav class="navbar navbar-default navbar-fixed-top">
- <div class="container">
-   <!-- Brand and toggle get grouped for better mobile display -->
-   <div class="navbar-header">
-     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+<nav class="navbar navbar-default navbar-fixed-top" data-ng-controller="HeaderController">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
        <span class="sr-only">Toggle navigation</span>
        <span class="icon-bar"></span>
        <span class="icon-bar"></span>
        <span class="icon-bar"></span>
      </button>
-     <a class="navbar-brand" href="/">Twister</a>
-   </div>
+      <a class="navbar-brand" data-ui-sref="feed">Twister</a>
+    </div>
 
-   <!-- Collect the nav links, forms, and other content for toggling -->
-   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-     <form class="navbar-form navbar-right" role="logout">
-       <a class="btn btn-default" href="/signin">Log in</a>
-       <a class="btn btn-primary" href="/signup">Sign up</a>
-     </form>
-   </div><!-- /.navbar-collapse -->
- </div><!-- /.container -->
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-right" role="signin" data-ng-if="!authentication.user">
+        <a class="btn btn-default" data-ui-sref="signin">Sign in</a>
+        <a class="btn btn-primary" data-ui-sref="signup">Sign up</a>
+      </form>
+      <form class="navbar-form navbar-right" role="signout" data-ng-if="authentication.user">
+        <a class="btn btn-primary" href="/api/auth/signout">Sign out</a>
+      </form>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->

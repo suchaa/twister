@@ -27,7 +27,7 @@
     </div>
 
     <div class="main-panel">
-      <div class="tweet" data-ng-repeat="tweet in tweets" data-ng-class="{'first-item': $first}">
+      <div class="tweet" data-ng-repeat="tweet in tweets | orderBy: '-tweetTime'" data-ng-class="{'first-item': $first}">
         <div class="name">
           {{ tweet.name }}
         </div>
@@ -38,7 +38,7 @@
           {{ tweet.tweetText}}
         </div>
         <div class="action">
-          <div class="reply"><i class="fa fa-reply"></i></div>
+          <div class="reply" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-reply"></i></div>
         </div>
       </div>
     </div>
