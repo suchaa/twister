@@ -5,6 +5,9 @@
                 <div class="header">
                     <div class="name">{{ profile.name}}</div>
                     <div class="screen-name">@{{ profile.screenName}}</div>
+                    <div class="is_followed" data-ng-if="profile.is_followed">
+                        follows you
+                    </div>
                 </div>
                 <!-- /.header -->
                 <div class="detail">
@@ -22,7 +25,8 @@
                     </div>
                 </div>
                 <div class="action last-section">
-                    <input type="button" class="btn btn-default btn-lg" value="Follow" data-ng-click="follow(profile.screenName)">
+                    <input type="button" class="btn btn-default btn-lg" value="Follow" data-ng-click="follow(profile.screenName)" data-ng-if="!profile.isFollowing">
+                    <input type="button" class="btn btn-primary btn-lg" value="Unfollow" data-ng-click="unfollow(profile.screenName)" data-ng-if="profile.isFollowing">
                 </div>
                 <!-- /.detail -->
             </div>
