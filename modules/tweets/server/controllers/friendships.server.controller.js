@@ -60,7 +60,7 @@ exports.follow = function (req, res, next) {
         var username = req.user.username;
         var followUsername = req.body.follow_username;
 
-        Following.findOneAndUpdate(
+        Following.findOneAndUpdate( /* มีอยู่แล้ว และ อัพเดต */
             { username: username }, //condition
             { $addToSet: { followings: followUsername } }, //add to set
             { upsert: true }, //update or insert collection
@@ -70,11 +70,11 @@ exports.follow = function (req, res, next) {
                         message: errorHandler.getErrorMessage(err)
                     });
                 }
-                Follower.findByIdAndUpdate(
+                Follower.findOneAndUpdate(
                     { username: followUsername },
                     { $addToSet: { followers: username } },
                     { upsert: true },
-                    function (err, following) {
+                    function (err, follower) {
                         if (err) {
                             return res.status(400).send({
                                 message: errorHandler.getErrorMessage(err)
@@ -85,7 +85,47 @@ exports.follow = function (req, res, next) {
                         });
                     }
                 );
-            });
+            }
+        );
+    } else {
+        res.status(400).send({
+            message: 'User is not signed in'
+        });
+    }
+};
+
+/* unfollow */
+exports.unfollow = function (req, res, next) {
+    if (req.user) {
+        var username = req.user.username;
+        var unfollowUsername = req.body.unfollow_username;
+
+        Following.update(
+            { username: username },
+            { $pull: { followings: unfollowUsername } },
+            function (err, following) {
+                if (err) {
+                    return res.status(400).send({
+                        message: errorHandler.getErrorMessage(err)
+                    });
+                }
+
+                Follower.update(
+                    { username: unfollowUsername },
+                    {$pull: {followers: username}},
+                    function(err, follower){
+                        if (err) {
+                            return res.status(400).send({
+                                message: errorHandler.getErrorMessage(err)
+                            });
+                        }
+                        res.json({
+                            is_following: false
+                        });
+                    }
+                );
+            }
+        );
     } else {
         res.status(400).send({
             message: 'User is not signed in'

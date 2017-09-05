@@ -28,5 +28,31 @@ angular.module('tweets').controller('UserTimelineController', [
       .error(function (response) {
         $scope.error = response.message;
       });
+
+      /* กด follow */
+      $scope.follow = function(followUsername){
+        $http.post('/friendships/follow', {
+          follow_username: followUsername
+        })
+        .success(function(response){
+          $scope.profile.isFollowing = response.is_following;
+        })
+        .error(function(response){
+          $scope.error = response.message;
+        });
+      };
+
+       /* กด unfollow */
+       $scope.unfollow = function(unfollowUsername){
+        $http.post('/friendships/unfollow', {
+          unfollow_username: unfollowUsername
+        })
+        .success(function(response){
+          $scope.profile.isFollowing = response.is_following;
+        })
+        .error(function(response){
+          $scope.error = response.message;
+        });
+      };
   }
 ]);
