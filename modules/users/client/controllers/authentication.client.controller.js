@@ -36,7 +36,6 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
       });
     };
     
-
    /*  $scope.signout = function () {
       $http.get('/api/auth/signout', $scope.credentials).success(function (response) {
         $scope.authentication.user = response;
